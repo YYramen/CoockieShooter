@@ -53,14 +53,26 @@ public class GameManager : MonoBehaviour
             Cursor.visible = true;
         }
 
-        //if (Physics.Raycast(ray, out hit, _rayRange))
-        //{
-        //    _gunObject.transform.LookAt(hit.point);    // 銃の方向を変えている(一旦これなし)
-        //}
+        // 左クリック(射撃)をした時に何に当たったかで処理を変える
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("AltFire"))
+        {
+            Shot();
+        }
+    }
 
-        // 敵が照準に入っているか調べる
-        bool isEnemyTargeted = Physics.Raycast(ray, out hit, _rayRange, _enemyLayer);
-        _currentTarget = isEnemyTargeted ? hit.collider.gameObject.GetComponent<EnemyController>() : null;    // 三項演算子 ? を使っている
+    void Shot()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Enemy")))
+        {
+            Debug.Log($"{hit}に当たった");
+        }
+        else
+        {
+            Debug.Log("何にも当たらなかった");
+        }
     }
 
     void AddCoin()  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
