@@ -5,14 +5,11 @@ using UnityEngine;
 /// <summary>
 /// プレイヤーの動きを制御するコンポーネント
 /// </summary>
-[RequireComponent(typeof(Rigidbody))]
-public class PlayerControl : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    Rigidbody _rb;
-
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        
     }
 
     void Update()
