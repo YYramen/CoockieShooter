@@ -171,6 +171,7 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 0
+  _coinText: {fileID: 1550931720}
   _crosshairImage: {fileID: 1979921664}
   _gunObject: {fileID: 483704594}
   _rayRange: 100

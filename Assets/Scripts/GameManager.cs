@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool _hideSystemMouseCursor = false;
     [Header("敵関連")]
     [SerializeField, Tooltip("敵がいるレイヤー")] LayerMask _enemyLayer = default;
-    /// <summary>現在照準で狙われている敵</summary>
     [Tooltip("現在照準で狙われている敵")] EnemyController _currentTarget;
+    [Header("スコア(コイン関係)")]
+    [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
+    [Tooltip("所持している総コイン数")] long _coin = 0;
     [Header("照準関係")]
     [SerializeField, Tooltip("照準のUI")] Image _crosshairImage;
     [SerializeField, Tooltip("銃のオブジェクト")] GameObject _gunObject;
@@ -42,7 +44,12 @@ public class GameManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        _gunObject.transform.rotation = Quaternion.LookRotation(ray.direction);     //// 銃の向く方向を変えている
+        //// 照準に敵がいるかどうかを調べる
+        //bool isEnemyTargeted = Physics.Raycast(ray, out hit, _rayRange, _enemyLayer);
+        //_currentTarget = isEnemyTargeted ? hit.collider.gameObject.GetComponent<EnemyController>() : null;
+
+        // 銃の向く方向を変える
+        _gunObject.transform.rotation = Quaternion.LookRotation(ray.direction);
 
         if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Gun")))
         {
@@ -68,7 +75,7 @@ public class GameManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Enemy")))
         {
             Debug.Log($"{hit}に当たった");
-            AddCoin();
+            AddCoin(hit.collider.gameObject.GetComponent<EnemyController>().Hit());
         }
         else
         {
@@ -76,9 +83,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void AddCoin()  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
+
+    /// <summary>
+    /// コインが増えるときに呼ばれる関数、取得したコインをTextに表示する
+    /// </summary>
+    /// <param name="coin"></param>
+    void AddCoin(long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
     {
-        Debug.Log("ダメージを与えた");
+        _coin += coin;
+        _coinText.text = _coin.ToString();
+
     }
 
     private void OnApplicationQuit()

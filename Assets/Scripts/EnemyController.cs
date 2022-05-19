@@ -16,12 +16,36 @@ public class EnemyController : MonoBehaviour
     [Tooltip("攻撃判定のためのコライダー")] Collider _collider = null;
     void Start()
     {
-        
+
     }
 
-    
+
     void Update()
     {
-        
+
+    }
+
+
+    /// <summary>
+    /// プレイヤーの攻撃が当たった時に呼ばれる関数
+    /// </summary>
+    /// <returns></returns>
+    public long Hit()
+    {
+        if (_enemyHp > 0)
+        {
+            Debug.Log($"ダメージを与えた、{_coinByAttacked}コインゲット");
+            return _coinByAttacked;
+        }
+        else if (_enemyHp < 0)
+        {
+            Debug.Log($"敵を倒した、{_coinByDeath}コインゲット");
+            return _coinByDeath;
+        }
+        else
+        {
+            Debug.LogWarning("Enemy の体力が不正な値になっています、このメッセージが出た場合要修正");
+            return _coinByAttacked;
+        }
     }
 }
