@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51047088513ba84ebf61cff1a7f88f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hideSystemMouseCursor: 0
+  _hideSystemMouseCursor: 1
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 0

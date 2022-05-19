@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Enemy")))
         {
             Debug.Log($"{hit}に当たった");
+            AddCoin();
         }
         else
         {
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     void AddCoin()  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
     {
-
+        Debug.Log("ダメージを与えた");
     }
 
     private void OnApplicationQuit()
