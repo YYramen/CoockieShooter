@@ -26,15 +26,12 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() //ƒQ[ƒ€ƒvƒŒƒC‚ğ‰Šú‰»‚·‚é
     {
-        if (_hideSystemMouseCursor)
-        {
-            Cursor.visible = false;
-        }
+        Cursor.visible = !_hideSystemMouseCursor;
     }
 
     void Start()
     {
-
+        StartGame();
     }
 
     void Update()
