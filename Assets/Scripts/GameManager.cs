@@ -26,7 +26,17 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() //ƒQ[ƒ€ƒvƒŒƒC‚ğ‰Šú‰»‚·‚é
     {
-        Cursor.visible = !_hideSystemMouseCursor;
+        Cursor.visible = _hideSystemMouseCursor;
+
+        if (_hideSystemMouseCursor)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        //Cursor.visible = _hideSystemMouseCursor;
     }
 
     void Start()
