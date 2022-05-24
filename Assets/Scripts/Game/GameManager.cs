@@ -67,10 +67,16 @@ public class GameManager : MonoBehaviour
             Cursor.visible = true;
         }
 
-        // 左クリック(射撃)をした時に何に当たったかで処理を変える
-        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("AltFire"))
+        // 左クリック(Shot)をした時
+        if (Input.GetButtonDown("Fire1"))
         {
             Shot();
+        }
+        
+        //右クリック(AltShot)をした時
+        if (Input.GetButtonDown("Fire2"))
+        {
+            //AltShot();
         }
     }
 
@@ -95,7 +101,7 @@ public class GameManager : MonoBehaviour
     /// コインが増えるときに呼ばれる関数、取得したコインをTextに表示する
     /// </summary>
     /// <param name="coin"></param>
-    void AddCoin(long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
+    public void AddCoin(long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
     {
         _coin += coin;
         _coinText.text = _coin.ToString();
