@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Gunの基底クラス
+/// Gunの基底クラス、Overrideして使う
 /// </summary>
 public class GunBase : MonoBehaviour
 {
     /// <summary>
     /// 左クリック時のGunの処理
     /// </summary>
-    protected virtual void Shot()
+    protected virtual void Shot()   
     {
 
     }
