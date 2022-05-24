@@ -250,7 +250,7 @@ MonoBehaviour:
   _hideSystemMouseCursor: 1
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _coinText: {fileID: 1550931720}
   _coin: 0
   _crosshairImage: {fileID: 1979921664}
