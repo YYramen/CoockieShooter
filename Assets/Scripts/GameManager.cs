@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("現在照準で狙われている敵")] EnemyController _currentTarget;
     [Header("スコア(コイン関係)")]
     [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
-    [Tooltip("所持している総コイン数")] long _coin = 0;
+    [Tooltip("所持している総コイン数")] [SerializeField] long _coin = 0;
     [Header("照準関係")]
     [SerializeField, Tooltip("照準のUI")] Image _crosshairImage;
     [SerializeField, Tooltip("銃のオブジェクト")] GameObject _gunObject;

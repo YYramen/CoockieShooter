@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3872066542070356541}
   - component: {fileID: 3872066542070356540}
   - component: {fileID: 3964528923287798292}
-  - component: {fileID: 1593297935171875205}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Enemy
@@ -119,21 +118,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2.2204466e-16, z: 10.000002}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1593297935171875205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3872066542070356543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d01c8bd0010152458f61acab04426b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyHp: 100
-  _coinByAttacked: 1
-  _coinByDeath: 100
 --- !u!1 &7793547655664007617
 GameObject:
   m_ObjectHideFlags: 0
