@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100f, _enemyLayer))
+        if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Enemy")))
         {
             Debug.Log($"{hit}‚É“–‚½‚Á‚½");
             AddCoin(hit.collider.gameObject.GetComponent<EnemyController>().Hit());
