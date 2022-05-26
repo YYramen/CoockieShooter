@@ -7,20 +7,27 @@ using UnityEngine.UI;
 /// <summary>
 /// ゲームを管理するスクリプト、適当なオブジェクトにアタッチして設定すれば動く
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [Header("マウスカーソルをゲーム中に消すかどうかの設定")]
     [SerializeField] bool _hideSystemMouseCursor = false;
+
     [Header("敵関連")]
     [SerializeField, Tooltip("敵がいるレイヤー")] LayerMask _enemyLayer = default;
     [Tooltip("現在照準で狙われている敵")] EnemyController _currentTarget;
+
     [Header("スコア(コイン関係)")]
     [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
     [Tooltip("所持している総コイン数")] [SerializeField] long _coin = 0;
+
     [Header("照準関係")]
     [SerializeField, Tooltip("照準のUI")] Image _crosshairImage;
     [SerializeField, Tooltip("銃のオブジェクト")] GameObject _gunObject;
     [SerializeField, Tooltip("銃から飛ばされるRayの距離")] float _rayRange = 100f;
+
+    [Header("現在所持している武器(初期装備はハンドガン)")]
+    [SerializeField] GameObject _initialWepon = default;
+
     [Header("ゲームスタート時に呼ばれる")]
     [SerializeField, Tooltip("ゲームスタート時に呼び出す処理")] UnityEngine.Events.UnityEvent _onGameStart = null;
 
@@ -51,7 +58,7 @@ public class GameManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        //// 照準に敵がいるかどうかを調べる
+        //// 照準に敵がいるかどうかを調べる(Shot関数に書いたから要らないかも)
         //bool isEnemyTargeted = Physics.Raycast(ray, out hit, _rayRange, _enemyLayer);
         //_currentTarget = isEnemyTargeted ? hit.collider.gameObject.GetComponent<EnemyController>() : null;
 
@@ -80,7 +87,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Shot()
+    public void Shot()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -105,7 +112,6 @@ public class GameManager : MonoBehaviour
     {
         _coin += coin;
         _coinText.text = _coin.ToString();
-
     }
 
     private void OnApplicationQuit()
