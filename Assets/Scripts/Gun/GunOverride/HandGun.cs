@@ -7,23 +7,7 @@ using UnityEngine;
 /// </summary>
 public class HandGun : GunBase
 {
-    protected override void Shot()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Enemy")))
-        {
-            Debug.Log($"{hit}‚É“–‚½‚Á‚½");
-            GameManager.Instance.Shot();
-        }
-        else
-        {
-            Debug.Log("‰½‚É‚à“–‚½‚ç‚È‚©‚Á‚½");
-        }
-    }
-
-    protected override void AltShot()
+    protected override void OnShot()
     {
         
     }

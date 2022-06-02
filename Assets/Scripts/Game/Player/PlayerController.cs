@@ -17,13 +17,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("銃から飛ばされるRayの距離")] float _rayRange = 100f;
 
     [Header("現在装備中の武器")]
-    [SerializeField, Tooltip("現在装備中の武器")] GameObject _currentWepon = default;
+    [Tooltip("銃の配列"), SerializeField] GunBase[] _guns;
+    [Tooltip("現在装備中の武器")] GunBase _currentWepon = default;
+
+    CoinManager _coinManager;
 
     /// <summary>
     /// ゲームスタート時に呼ばれる
     /// </summary>
     void StartGame()
     {
+        _coinManager = CoinManager.Instance;
         Cursor.visible = _hideSystemMouseCursor;
 
         if (_hideSystemMouseCursor)
@@ -34,6 +38,8 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+        _currentWepon = _guns[0];
     }
 
     private void Start()
@@ -43,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        Crosshair();
     }
 
     void Crosshair()
@@ -68,7 +74,7 @@ public class PlayerController : MonoBehaviour
         // 左クリック(Shot)をした時
         if (Input.GetButtonDown("Fire1"))
         {
-            Shot();
+            _currentWepon.Shot();
         }
 
         //右クリック(AltShot)をした時

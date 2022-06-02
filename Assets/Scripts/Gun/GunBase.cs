@@ -7,10 +7,35 @@ using UnityEngine;
 /// </summary>
 public class GunBase : MonoBehaviour
 {
+    [SerializeField] protected int _atk = 1;
+
     /// <summary>
     /// 左クリック時のGunの処理
     /// </summary>
-    protected virtual void Shot()   
+    public void Shot()   
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Enemy")))
+        {
+            EnemyController ec = hit.collider.GetComponent<EnemyController>();
+            if (ec)
+            {
+                ec.Hit(_atk);
+            }
+
+
+            Debug.Log($"{hit}に当たった");
+        }
+        else
+        {
+            Debug.Log("何にも当たらなかった");
+        }
+        OnShot();
+    }
+
+    protected virtual void OnShot()
     {
 
     }
@@ -18,7 +43,7 @@ public class GunBase : MonoBehaviour
     /// <summary>
     /// 右クリック時のGunの処理
     /// </summary>
-    protected virtual void AltShot()
+    public virtual void AltShot(CoinManager coinManager)
     {
         
     }
