@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 /// <summary>
-/// Player のコインを管理する
+/// Player のコインを管理するクラス
 /// </summary>
 public class CoinManager : SingletonMonoBehaviour<CoinManager>
 {

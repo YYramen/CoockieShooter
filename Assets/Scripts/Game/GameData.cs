@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+
+/// <summary>
+/// 参照用のクラス。何かに保存したりはしない。
+/// </summary>
 public enum ItemType
 {
     Gun,
@@ -26,7 +30,7 @@ public class ItemTable
 
 public class GameData
 {
-    static public List<ItemTable> data = new List<ItemTable>()
+    static public List<ItemTable> ItemTable = new List<ItemTable>()
     {
         new ItemTable(){ Type = ItemType.Gun, Name = "ハンドガン", value = 10, targetId = 1},
         new ItemTable(){ Type = ItemType.Gun, Name = "マシンピストル", value = 100, targetId = 2},

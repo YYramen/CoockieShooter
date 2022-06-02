@@ -32,6 +32,7 @@ public class GunBase : MonoBehaviour
         {
             Debug.Log("‰½‚É‚à“–‚½‚ç‚È‚©‚Á‚½");
         }
+
         OnShot();
     }
 

@@ -25,10 +25,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     
 
-    void Start()
-    {
-        
-    }
+
 
     /// <summary>
     /// コインが増えるときに呼ばれる関数、取得したコインをTextに表示する

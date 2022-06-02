@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// プレイヤーの動きを制御するコンポーネント(銃とか照準とか)
+/// プレイヤーの動きを制御するクラス(銃とか照準とか)
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
     [Header("マウスカーソルをゲーム中に消すかどうかの設定")]
-    [SerializeField] bool _hideSystemMouseCursor = false;
+    [SerializeField] public bool _hideSystemMouseCursor = false;
 
     [Header("照準関係")]
     [SerializeField, Tooltip("照準のUI")] Image _crosshairImage;
@@ -28,16 +28,8 @@ public class PlayerController : MonoBehaviour
     void StartGame()
     {
         _coinManager = CoinManager.Instance;
-        Cursor.visible = _hideSystemMouseCursor;
 
-        if (_hideSystemMouseCursor)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        Cursor.visible = _hideSystemMouseCursor;
 
         _currentWepon = _guns[0];
     }
@@ -59,17 +51,10 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
+        
+
         // 銃の向く方向を変える
         _gunObject.transform.rotation = Quaternion.LookRotation(ray.direction);
-
-        if (Physics.Raycast(ray, out hit, 1f, LayerMask.GetMask("Gun")))
-        {
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.visible = true;
-        }
 
         // 左クリック(Shot)をした時
         if (Input.GetButtonDown("Fire1"))

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 敵の動きを制御するコンポーネント
+/// 敵の動きを制御するクラス
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
@@ -17,10 +17,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField, Tooltip("敵を倒した際に貰えるコイン")] long _coinByDeath = 100;
 
     [Tooltip("攻撃判定のためのコライダー")] Collider _collider = null;
-    void Start()
-    {
-
-    }
 
     /// <summary>
     /// プレイヤーの攻撃が当たった時に呼ばれる関数
