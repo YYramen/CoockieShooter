@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class CoinManager : SingletonMonoBehaviour<CoinManager>
 {
-    [Header("現在所持しているコインの数"), SerializeField]  long _currentCoins = 0;
+    [Header("現在所持しているコインの数"), SerializeField] static public long _currentCoins = 0;
     [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
 
     /// <summary>
@@ -18,7 +18,22 @@ public class CoinManager : SingletonMonoBehaviour<CoinManager>
     /// <param name="coin"></param>
     public void AddCoin(long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
     {
-        _currentCoins += coin;
+       _currentCoins += coin;
         _coinText.text = _currentCoins.ToString();
+    }
+
+    /// <summary>
+    /// アイテムを購入する処理
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="cost"></param>
+    static public void Buy(ItemTable item, int cost)
+    {
+        _currentCoins -= cost;
+        switch (item.Type)
+        {
+            //case ItemType.Wepon:  //TODO アイテムを買う処理を作れ。
+
+        }
     }
 }

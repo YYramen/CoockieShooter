@@ -8,6 +8,7 @@ using UnityEngine;
 public class GunBase : MonoBehaviour
 {
     [SerializeField] protected int _atk = 1;
+    [SerializeField] LayerMask _layerMask;
 
     /// <summary>
     /// ¶ƒNƒŠƒbƒN‚ÌGun‚Ìˆ—
@@ -24,8 +25,6 @@ public class GunBase : MonoBehaviour
             {
                 ec.Hit(_atk);
             }
-
-
             Debug.Log($"{hit}‚É“–‚½‚Á‚½");
         }
         else

@@ -49,9 +49,7 @@ public class PlayerController : MonoBehaviour
         // Æ€‚Ìˆ—
         _crosshairImage.rectTransform.position = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
-        
 
         // e‚ÌŒü‚­•ûŒü‚ğ•Ï‚¦‚é
         _gunObject.transform.rotation = Quaternion.LookRotation(ray.direction);
