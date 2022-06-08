@@ -12,8 +12,37 @@ public class WeponManager : MonoBehaviour
         public int Id;
         public GameObject Prefab;
     }
-    List<WeponType> _weponTypes = new List<WeponType>();
+    [SerializeField] List<WeponSetting> _weponSettings = new List<WeponSetting>();
+
+    List<WeponData> _wepons = new List<WeponData>();
 
     float _rad = 0f;
-    int _createCount = 0;
+    int _createdCount = 0;
+
+    public void Buy(int Id, bool isInit = false)
+    {
+        var prefab = _weponSettings.Where(x => x.Id == Id).Select(s => s.Prefab).Single();
+        var obj = Instantiate(prefab, this.transform);
+
+        if (!isInit)
+        {
+            bool isFind = false;
+
+            for (int i= 0; i < _wepons.Count; i++)
+            {
+                if(_wepons[i].Id != Id)
+                {
+                    continue;
+                }
+
+                isFind = true;
+                _wepons[i].Level++;
+                break;
+            }
+            if (!isFind)
+            {
+                _wepons.Add(new WeponData() { Id = Id, Level = 1 });
+            }
+        }
+    }
 }
