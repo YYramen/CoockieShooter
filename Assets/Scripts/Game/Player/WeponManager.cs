@@ -45,4 +45,18 @@ public class WeponManager : MonoBehaviour
             }
         }
     }
+
+    public int GetLevel(int id)
+    {
+        var data = _wepons.Where(x => x.Id == id);
+
+        if (data.Count() > 0)
+        {
+            return data.Single().Level;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

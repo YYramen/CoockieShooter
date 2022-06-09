@@ -24,13 +24,13 @@ public class ShopItem : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.AddListener(() =>
         {
-            if (Cost() > CoinManager._currentCoins) return;
+            if (Value() > CoinManager._currentCoins) return;
 
         });
         
     }
 
-    int Cost()
+    int Value()
     {
         return Mathf.FloorToInt(_item.value * (1f + (float)(_itemNum / 10f)));
     }
@@ -41,7 +41,7 @@ public class ShopItem : MonoBehaviour
 
         if (_item.Type == ItemType.Wepon)
         {
-
+            _itemNum = CoinManager.Wepon.GetLevel(_item.targetId);
         }
     }
 }

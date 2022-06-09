@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 
 /// <summary>
-/// Player のコインを管理するクラス
+/// Player のコインを管理するクラス。管理している物がコインなのでそのうちGameManagerになりそう。
 /// </summary>
 public class CoinManager : SingletonMonoBehaviour<CoinManager>
 {
     [Header("現在所持しているコインの数"), SerializeField] static public long _currentCoins = 0;
     [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
+    WeponManager _weponManager;
+    public static WeponManager Wepon => CoinManager.Instance._weponManager;
+
 
     /// <summary>
     /// コインが増えるときに呼ばれる関数、取得したコインをTextに表示する
