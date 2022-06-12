@@ -7,12 +7,15 @@ using UnityEngine.UI;
 /// <summary>
 /// Player のコインを管理するクラス。管理している物がコインなのでそのうちGameManagerになりそう。
 /// </summary>
-public class CoinManager : SingletonMonoBehaviour<CoinManager>
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    [Header("現在所持しているコインの数"), SerializeField] static public long _currentCoins = 0;
+    [Header("現在所持しているコインの数"), SerializeField] public long _currentCoins = 0;
     [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
     WeponManager _weponManager;
-    public static WeponManager Wepon => CoinManager.Instance._weponManager;
+    public WeponManager Wepon => GameManager.Instance._weponManager;
+    public void SetWeponManager(WeponManager wepon) { _weponManager = wepon; }
+
+    public long Currentcoins => _currentCoins;
 
 
     /// <summary>
@@ -30,7 +33,7 @@ public class CoinManager : SingletonMonoBehaviour<CoinManager>
     /// </summary>
     /// <param name="item"></param>
     /// <param name="cost"></param>
-    static public void Buy(ItemTable item, int cost)
+    public void Buy(ItemTable item, int cost)
     {
         _currentCoins -= cost;
         switch (item.Type)

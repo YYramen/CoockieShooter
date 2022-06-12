@@ -20,14 +20,14 @@ public class PlayerController : MonoBehaviour
     [Tooltip("銃の配列"), SerializeField] GunBase[] _guns;
     [Tooltip("現在装備中の武器")] GunBase _currentWepon = default;
 
-    CoinManager _coinManager;
+    GameManager _coinManager;
 
     /// <summary>
     /// ゲームスタート時に呼ばれる
     /// </summary>
     void StartGame()
     {
-        _coinManager = CoinManager.Instance;
+        _coinManager = GameManager.Instance;
 
         Cursor.visible = _hideSystemMouseCursor;
 

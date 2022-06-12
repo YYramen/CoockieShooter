@@ -13,7 +13,6 @@ public class ShopItem : MonoBehaviour
     [Tooltip("アイテムのコスト"), SerializeField] Text _value;
     [Tooltip("アイテムを持っている個数"), SerializeField] Text _num;
     int _itemNum = 0;
-    Button _itemBtn;
     Button _button;
     ItemTable _item;
 
@@ -24,10 +23,11 @@ public class ShopItem : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.AddListener(() =>
         {
-            if (Value() > CoinManager._currentCoins) return;
-
+            if (Value() > GameManager.Instance.Currentcoins) return;
+            UpdateItem();
+            GameManager.Instance.Buy(_item,Value());
         });
-        
+        UpdateItem();
     }
 
     int Value()
@@ -41,7 +41,29 @@ public class ShopItem : MonoBehaviour
 
         if (_item.Type == ItemType.Wepon)
         {
-            _itemNum = CoinManager.Wepon.GetLevel(_item.targetId);
+            _itemNum = GameManager.Instance.Wepon.GetLevel(_item.targetId);
+        }
+        else
+        {
+            _num.text = "null";
+        }
+        _value.text = string.Format("Value : {0}", ValueConverter.Convert(Value()));
+    }
+
+    private void Update()
+    {
+        Check();
+    }
+
+    private void Check()
+    {
+        if (GameManager.Instance.Currentcoins < Value())
+        {
+            _value.color = Color.gray;
+        }
+        else
+        {
+            _value.color = Color.black;
         }
     }
 }

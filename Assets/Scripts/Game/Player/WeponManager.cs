@@ -19,6 +19,11 @@ public class WeponManager : MonoBehaviour
     float _rad = 0f;
     int _createdCount = 0;
 
+    private void Awake()
+    {
+        GameManager.Instance.SetWeponManager(this);
+    }
+
     public void Buy(int Id, bool isInit = false)
     {
         var prefab = _weponSettings.Where(x => x.Id == Id).Select(s => s.Prefab).Single();
@@ -44,6 +49,7 @@ public class WeponManager : MonoBehaviour
                 _wepons.Add(new WeponData() { Id = Id, Level = 1 });
             }
         }
+        _createdCount++;
     }
 
     public int GetLevel(int id)

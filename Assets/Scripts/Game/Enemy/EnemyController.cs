@@ -29,12 +29,12 @@ public class EnemyController : MonoBehaviour
         if (_enemyHp > 0)
         {
             Debug.Log($"ダメージを与えた、{_coinByAttacked}コインゲット");
-            CoinManager.Instance.AddCoin(_coinByAttacked);
+            GameManager.Instance.AddCoin(_coinByAttacked);
         }
         else
         {
             Debug.Log($"敵を倒した、{_coinByDeath}コインゲット");
-            CoinManager.Instance.AddCoin(_coinByDeath);
+            GameManager.Instance.AddCoin(_coinByDeath);
             Destroy(this.gameObject);
         }
     }
