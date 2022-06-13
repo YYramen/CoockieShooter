@@ -38,12 +38,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         _currentCoins -= cost;
         switch (item.Type)
         {
-            case ItemType.Wepon:  //TODO アイテムを買う処理を作れ。
+            case ItemType.Wepon:  
                 Instance.Wepon.Buy(item.targetId);
                 break;
 
             case ItemType.Upgrade:
-                //Instance.Wepon.Buy(item.targetId);
+                Instance.Wepon.Buy(item.targetId);
                 break;
         }
     }
