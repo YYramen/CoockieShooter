@@ -12,7 +12,7 @@ public class WeponManager : MonoBehaviour
         public int Id;
         public GameObject Prefab;
     }
-    [SerializeField] List<WeponSetting> _weponSettings = new List<WeponSetting>();
+    [SerializeField] List<WeponSetting> _weponSettings;
 
     List<WeponData> _wepons = new List<WeponData>();
 
@@ -22,6 +22,19 @@ public class WeponManager : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.SetWeponManager(this);
+    }
+
+    public void SetUp(List<WeponData> savedata)
+    {
+        _wepons = savedata;
+
+        foreach(var w in _wepons)
+        {
+            for(int i = 0; i < w.Level; i++)
+            {
+                Buy(w.Id, true);
+            }
+        }
     }
 
     public void Buy(int Id, bool isInit = false)
