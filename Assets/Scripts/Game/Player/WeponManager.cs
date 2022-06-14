@@ -16,7 +16,6 @@ public class WeponManager : MonoBehaviour
 
     List<WeponData> _wepons = new List<WeponData>();
 
-    float _rad = 0f;
     int _createdCount = 0;
 
     private void Awake()

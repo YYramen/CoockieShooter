@@ -32,7 +32,7 @@ public class ShopItem : MonoBehaviour
 
     int Value()
     {
-        return Mathf.FloorToInt(_item.value * (1f + (float)(_itemNum / 10f)));
+        return Mathf.FloorToInt(_item.price * (1f + (float)(_itemNum / 10f)));
     }
 
     public void UpdateItem()
@@ -42,12 +42,13 @@ public class ShopItem : MonoBehaviour
         if (_item.Type == ItemType.Wepon)
         {
             _itemNum = GameManager.Instance.Wepon.GetLevel(_item.targetId);
+            _num.text = _itemNum.ToString();
         }
         else
         {
-            _num.text = "null";
+            _num.text = "0";
         }
-        _value.text = string.Format("Value : {0}", ValueConverter.Convert(Value()));
+        _value.text = string.Format("Price:{0}", ValueConverter.Convert(Value()));
     }
 
     private void Update()
