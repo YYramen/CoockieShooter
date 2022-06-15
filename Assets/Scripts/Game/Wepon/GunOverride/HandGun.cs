@@ -21,6 +21,7 @@ public class HandGun : GunBase
             }
             Debug.Log($"{hit}‚É“–‚½‚Á‚½");
         }
+
         else
         {
             Debug.Log("‰½‚É‚à“–‚½‚ç‚È‚©‚Á‚½");

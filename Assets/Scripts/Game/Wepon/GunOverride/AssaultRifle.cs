@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssaultRifle : MonoBehaviour
+public class AssaultRifle : GunBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Shot()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

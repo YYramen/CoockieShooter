@@ -16,12 +16,4 @@ public class GunBase : MonoBehaviour
     {
         
     }
-
-    /// <summary>
-    /// 右クリック時のGunの処理
-    /// </summary>
-    public virtual void AltShot()
-    {
-        
-    }
 }
