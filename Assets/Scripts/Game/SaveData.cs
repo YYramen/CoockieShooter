@@ -4,6 +4,10 @@ using UnityEngine;
 using System;
 using System.Text;
 
+
+/// <summary>
+/// セーブデータ。
+/// </summary>
 [Serializable]
 public class WeponData
 {

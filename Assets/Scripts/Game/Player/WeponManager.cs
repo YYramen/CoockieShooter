@@ -4,6 +4,10 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+
+/// <summary>
+/// プレイヤーのWeponを管理するコンポーネント
+/// </summary>
 public class WeponManager : MonoBehaviour
 {
     [Serializable]
