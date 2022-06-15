@@ -50,12 +50,12 @@ public class EnemyController : MonoBehaviour
         if (_enemyHp > 0)
         {
             Debug.Log($"ダメージを与えた、{_coinByAttacked}コインゲット");
-            GameManager.Instance.AddCoin(_coinByAttacked);
+            GameManager.Instance.AddCoin(WeponType.Gun, _coinByAttacked);
         }
         else if (_enemyHp <= 0)
         {
             Debug.Log($"敵を倒した、{_coinByDeath}コインゲット");
-            GameManager.Instance.AddCoin(_coinByDeath);
+            GameManager.Instance.AddCoin(WeponType.Gun, _coinByDeath);
             Respawn();
         }
         else
@@ -73,8 +73,6 @@ public class EnemyController : MonoBehaviour
         _enemyMaxHp += _upMaxHp;
         _enemyHp = _enemyMaxHp;
         _enemyLevel += _upLevel;
-
-        _coinByAttacked += _coinByAttacked;
         _coinByDeath += _coinByDeath;
 
         Debug.Log($"敵がレベルアップ。レベルが{_upLevel}上昇。HPが{_upMaxHp}上昇、");

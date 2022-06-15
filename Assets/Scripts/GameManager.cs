@@ -22,7 +22,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     /// コインが増えるときに呼ばれる関数、取得したコインをTextに表示する
     /// </summary>
     /// <param name="coin"></param>
-    public void AddCoin(long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
+    public void AddCoin(WeponType type, long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
     {
        _currentCoins += coin;
         _coinText.text = _currentCoins.ToString();

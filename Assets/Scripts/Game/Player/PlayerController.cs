@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         //右クリック(AltShot)をした時
         if (Input.GetButtonDown("Fire2"))
         {
-            //AltShot();
+            _currentWepon.AltShot();
         }
     }
 }

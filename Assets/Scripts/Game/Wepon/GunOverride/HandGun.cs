@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Gunの基底クラス、Overrideして使う
+/// ハンドガン(初期装備)のクラス、GunBase を継承している。
 /// </summary>
-public class GunBase : MonoBehaviour
+public class HandGun : GunBase
 {
-    [SerializeField] protected int _atk = 1;
-    [SerializeField] LayerMask _layerMask;
-
-    /// <summary>
-    /// 左クリック時のGunの処理
-    /// </summary>
-    public void Shot()   
+    public override void Shot()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -31,20 +25,6 @@ public class GunBase : MonoBehaviour
         {
             Debug.Log("何にも当たらなかった");
         }
-
-        OnShot();
-    }
-
-    protected virtual void OnShot()
-    {
-
-    }
-
-    /// <summary>
-    /// 右クリック時のGunの処理
-    /// </summary>
-    public virtual void AltShot(GameManager coinManager)
-    {
-        
+        Debug.DrawRay(ray.origin, ray.direction, Color.red, 1f) ;
     }
 }
