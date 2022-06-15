@@ -19,7 +19,7 @@ public class HandGun : GunBase
             {
                 ec.Hit(_atk);
             }
-            Debug.Log($"{hit}‚É“–‚½‚Á‚½");
+            Debug.Log($"{this}‚ª{hit}‚É“–‚½‚Á‚½");
         }
 
         else
