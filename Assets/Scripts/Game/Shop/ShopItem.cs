@@ -16,7 +16,6 @@ public class ShopItem : MonoBehaviour
     Button _button;
     ItemTable _item;
 
-
     public void SetUp(ItemTable item)
     {
         _item = item;
