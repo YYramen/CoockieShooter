@@ -12,6 +12,7 @@ public class ShopItem : MonoBehaviour
     [Tooltip("アイテムの名前"), SerializeField] Text _name;
     [Tooltip("アイテムのコスト"), SerializeField] Text _value;
     [Tooltip("アイテムを持っている個数(レベル)"), SerializeField] Text _num;
+    int _stackLevel = 0;
     int _itemNum = 0;
     Button _button;
     ItemTable _item;
@@ -27,6 +28,7 @@ public class ShopItem : MonoBehaviour
             GameManager.Instance.BuySelect(_item, Value());
         });
         UpdateItem();
+        _stackLevel++;
     }
 
     int Value()
@@ -37,7 +39,7 @@ public class ShopItem : MonoBehaviour
     public void UpdateItem()
     {
         _name.text = _item.Name;
-        _itemNum = GameManager.Instance.WeponManager.GetLevel(_item.targetId) + 1;
+        _itemNum = GameManager.Instance.WeponManager.GetLevel(_item.targetId) + _stackLevel;
         _num.text = _itemNum.ToString();
         _value.text = string.Format("Price:{0}", ValueConverter.Convert(Value()));
     }
