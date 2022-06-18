@@ -13,8 +13,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [Header("現在所持しているコインの数"), SerializeField] public long _currentCoins = 0;
     [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
     WeponManager _weponManager;
-    public WeponManager Wepon => GameManager.Instance._weponManager;
+   
+    public WeponManager Wepon => _weponManager;
+
     public void SetWeponManager(WeponManager wepon) { _weponManager = wepon; }
+
+    PlayerController _playerController;
+
+    public PlayerController PlayerController => _playerController;
+    public void SetPlayerController(PlayerController playerController) { _playerController = playerController; }
 
     public long Currentcoins => _currentCoins;
 
@@ -34,12 +41,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     /// </summary>
     /// <param name="item"></param>
     /// <param name="cost"></param>
-    public void Buy(ItemTable item, int cost)
+    public void BuySelect(ItemTable item, int cost)
     {
         _currentCoins -= cost;
         switch (item.Type)
         {
             case ItemType.Wepon:  
+                Instance.Wepon.Buy(item.targetId);
+                break;
+
+            case ItemType.AutoWepon:
                 Instance.Wepon.Buy(item.targetId);
                 break;
 

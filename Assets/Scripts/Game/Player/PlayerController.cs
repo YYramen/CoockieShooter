@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [Header("照準関係")]
     [SerializeField, Tooltip("照準のUI")] Image _crosshairImage;
     [SerializeField, Tooltip("銃のオブジェクト")] GameObject _gunObject;
+    public GameObject GunObject => _gunObject;
+
     [SerializeField, Tooltip("銃から飛ばされるRayの距離")] float _rayRange = 100f;
 
     [Header("現在装備中の武器")]
@@ -32,6 +34,8 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = _hideSystemMouseCursor;
 
         _currentWepon = _guns[0];
+
+        GameManager.Instance.SetPlayerController(this);
     }
 
     private void Start()

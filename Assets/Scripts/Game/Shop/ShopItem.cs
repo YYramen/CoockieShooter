@@ -11,7 +11,7 @@ public class ShopItem : MonoBehaviour
 {
     [Tooltip("アイテムの名前") , SerializeField] Text _name;
     [Tooltip("アイテムのコスト"), SerializeField] Text _value;
-    [Tooltip("アイテムを持っている個数"), SerializeField] Text _num;
+    [Tooltip("アイテムを持っている個数(レベル)"), SerializeField] Text _num;
     int _itemNum = 0;
     Button _button;
     ItemTable _item;
@@ -24,7 +24,7 @@ public class ShopItem : MonoBehaviour
         {
             if (Value() > GameManager.Instance.Currentcoins) return;
             UpdateItem();
-            GameManager.Instance.Buy(_item,Value());
+            GameManager.Instance.BuySelect(_item,Value());
         });
         UpdateItem();
     }

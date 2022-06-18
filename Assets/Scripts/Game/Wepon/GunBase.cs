@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class GunBase : MonoBehaviour
 {
-    [SerializeField] protected int _atk = 1;
+    [SerializeField, Tooltip("ˆĞ—Í")] protected int _atk = 1;
 
     /// <summary>
     /// ¶ƒNƒŠƒbƒN‚ÌGun‚Ìˆ—
