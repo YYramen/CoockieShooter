@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class ShopItem : MonoBehaviour
 {
-    [Tooltip("アイテムの名前") , SerializeField] Text _name;
+    [Tooltip("アイテムの名前"), SerializeField] Text _name;
     [Tooltip("アイテムのコスト"), SerializeField] Text _value;
     [Tooltip("アイテムを持っている個数(レベル)"), SerializeField] Text _num;
     int _itemNum = 0;
@@ -24,7 +24,7 @@ public class ShopItem : MonoBehaviour
         {
             if (Value() > GameManager.Instance.Currentcoins) return;
             UpdateItem();
-            GameManager.Instance.BuySelect(_item,Value());
+            GameManager.Instance.BuySelect(_item, Value());
         });
         UpdateItem();
     }
@@ -37,16 +37,8 @@ public class ShopItem : MonoBehaviour
     public void UpdateItem()
     {
         _name.text = _item.Name;
-
-        if (_item.Type == ItemType.Wepon)
-        {
-            _itemNum = GameManager.Instance.Wepon.GetLevel(_item.targetId);
-            _num.text = _itemNum.ToString();
-        }
-        else
-        {
-            _num.text = "0";
-        }
+        _itemNum = GameManager.Instance.WeponManager.GetLevel(_item.targetId) + 1;
+        _num.text = _itemNum.ToString();
         _value.text = string.Format("Price:{0}", ValueConverter.Convert(Value()));
     }
 

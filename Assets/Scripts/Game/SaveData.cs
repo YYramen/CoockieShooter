@@ -15,11 +15,11 @@ public class WeponData
     public int Level;
 }
 
-[Serializable]
-public class UpgradeData
-{
-    public int Id;
-}
+//[Serializable]
+//public class UpgradeData
+//{
+//    public int Id;
+//}
 
 [Serializable]
 public class SaveData 
@@ -27,5 +27,5 @@ public class SaveData
     public int GameVersion = 1;
     public long CookieNum = 0;
     public List<WeponData> Wepon = new List<WeponData>();
-    public List<UpgradeData> Upgrade = new List<UpgradeData>();
+    //public List<UpgradeData> Upgrade = new List<UpgradeData>();
 }

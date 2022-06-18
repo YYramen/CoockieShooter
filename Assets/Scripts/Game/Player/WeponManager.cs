@@ -15,6 +15,7 @@ public class WeponManager : MonoBehaviour
     {
         public int Id;
         public Material Material;
+        public AttatchmentBase Attatchment;
     }
     [SerializeField] List<WeponSetting> _weponSettings;
 
@@ -42,9 +43,13 @@ public class WeponManager : MonoBehaviour
 
     public void Buy(int Id, bool isInit = false)
     {
-        //var prefab = _weponSettings.Where(x => x.Id == Id).Select(s => s.Prefab).Single();
-        var material = _weponSettings.Where(x => x.Id == Id).Select(s => s.Material).Single();
-        GameManager.Instance.PlayerController.GunObject.GetComponent<MeshRenderer>().material = material;
+        ////var prefab = _weponSettings.Where(x => x.Id == Id).Select(s => s.Prefab).Single();
+        //var material = _weponSettings.Where(x => x.Id == Id).Select(s => s.Material).Single();
+        //GameManager.Instance.PlayerController.GunObject.GetComponent<MeshRenderer>().material = material;
+
+        var w = _weponSettings.Where(x => x.Id == Id).Single();
+        w.Attatchment.Execute(Id);
+
 
         if (!isInit)
         {

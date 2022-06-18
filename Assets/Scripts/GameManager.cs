@@ -12,16 +12,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [Header("現在所持しているコインの数"), SerializeField] public long _currentCoins = 0;
     [SerializeField, Tooltip("コイン数を表示させるテキスト")] Text _coinText;
-    WeponManager _weponManager;
-   
-    public WeponManager Wepon => _weponManager;
 
+    WeponManager _weponManager;
+    public WeponManager WeponManager => _weponManager;
     public void SetWeponManager(WeponManager wepon) { _weponManager = wepon; }
 
     PlayerController _playerController;
-
     public PlayerController PlayerController => _playerController;
     public void SetPlayerController(PlayerController playerController) { _playerController = playerController; }
+
+    Inventory _inventory;
+    public Inventory Inventory => _inventory;
+    public void SetInventory(Inventory inventory) { _inventory = inventory; }
 
     public long Currentcoins => _currentCoins;
 
@@ -30,9 +32,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     /// コインが増えるときに呼ばれる関数、取得したコインをTextに表示する
     /// </summary>
     /// <param name="coin"></param>
-    public void AddCoin(WeponType type, long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
+    public void AddCoin(long coin)  //敵を倒した時、ダメージを与えたときにコインをプレイヤーに与える
     {
-       _currentCoins += coin;
+        _currentCoins += coin;
         _coinText.text = _currentCoins.ToString();
     }
 
@@ -44,19 +46,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void BuySelect(ItemTable item, int cost)
     {
         _currentCoins -= cost;
-        switch (item.Type)
-        {
-            case ItemType.Wepon:  
-                Instance.Wepon.Buy(item.targetId);
-                break;
-
-            case ItemType.AutoWepon:
-                Instance.Wepon.Buy(item.targetId);
-                break;
-
-            case ItemType.Upgrade:
-                Instance.Wepon.Buy(item.targetId);
-                break;
-        }
+        Instance.WeponManager.Buy(item.targetId);
+        _coinText.text = _currentCoins.ToString();
     }
 }

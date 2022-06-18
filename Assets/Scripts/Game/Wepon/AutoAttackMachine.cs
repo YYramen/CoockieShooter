@@ -9,7 +9,6 @@ using UnityEngine;
 public class AutoAttackMachine : MonoBehaviour
 {
     [SerializeField] int _id = 0;
-    [SerializeField] WeponType _weponType;
     [SerializeField] float _attackInterval = 1.2f;
     [SerializeField] int _attackNum = 1;
 
@@ -25,7 +24,7 @@ public class AutoAttackMachine : MonoBehaviour
             if (_attackInterval <= 0f) break;
 
             yield return new WaitForSeconds(_attackInterval);
-            GameManager.Instance.AddCoin(_weponType, _attackNum);
+            GameManager.Instance.AddCoin(_attackNum);
         }
     }
 }

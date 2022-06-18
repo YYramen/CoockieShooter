@@ -8,6 +8,9 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField, Tooltip("攻撃力")] int _atk = 1;
+    [SerializeField, Tooltip("攻撃間隔")] float _interval = 1.5f;
+
     [Header("マウスカーソルをゲーム中に消すかどうかの設定")]
     [SerializeField] public bool _hideSystemMouseCursor = false;
 
@@ -61,7 +64,40 @@ public class PlayerController : MonoBehaviour
         // 左クリック(Shot)をした時
         if (Input.GetButtonDown("Fire1"))
         {
-            _currentWepon.Shot();
+            Shot();
         }
+    }
+
+    private void Shot()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Enemy")))
+        {
+            EnemyController ec = hit.collider.GetComponent<EnemyController>();
+            if (ec)
+            {
+                ec.Hit(_atk);
+            }
+            Debug.Log($"{this}が{hit}に当たった");
+        }
+
+        else
+        {
+            Debug.Log("何にも当たらなかった");
+        }
+        Debug.DrawRay(ray.origin, ray.direction, Color.red, 1f);
+    }
+
+    public void ChangeAttack(int value)
+    {
+        _atk += value;
+        Debug.Log($"現在の攻撃力は{_atk}");
+    }
+
+    public void ChangeInterval(float value)
+    {
+        _interval += value;
     }
 }

@@ -49,13 +49,13 @@ public class EnemyController : MonoBehaviour
         _enemyHpText.text = _enemyHp.ToString();
         if (_enemyHp > 0)
         {
-            Debug.Log($"ダメージを与えた、{_coinByAttacked}コインゲット");
-            GameManager.Instance.AddCoin(WeponType.Gun, _coinByAttacked);
+            Debug.Log($"ダメージを与えた、{damage}コインゲット");
+            GameManager.Instance.AddCoin(damage);
         }
         else if (_enemyHp <= 0)
         {
             Debug.Log($"敵を倒した、{_coinByDeath}コインゲット");
-            GameManager.Instance.AddCoin(WeponType.Gun, _coinByDeath);
+            GameManager.Instance.AddCoin(_coinByDeath);
             Respawn();
         }
         else

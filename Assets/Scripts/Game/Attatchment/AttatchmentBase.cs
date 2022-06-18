@@ -8,5 +8,15 @@ using UnityEngine;
 /// </summary>
 public class AttatchmentBase : MonoBehaviour
 {
-    
+
+    public void Execute(int Id)
+    {
+        GameManager.Instance.Inventory.ActiveItem(Id - 1);
+        OnExecute();
+    }
+
+    public virtual void OnExecute()
+    {
+
+    }
 }
