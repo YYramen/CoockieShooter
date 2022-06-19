@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField, Tooltip("敵のHPのテキスト")] Text _enemyHpText;
     [SerializeField, Tooltip("敵の現在のレベル")] int _enemyLevel = 1;
     [SerializeField, Tooltip("敵のレベルのテキスト")] Text _enemyLvText;
+    [SerializeField, Tooltip("ダメージの倍率")] int _damageScale = 1;
 
     [Header("コイン関係")]
     [SerializeField, Tooltip("敵を攻撃した際に貰えるコイン")] long _coinByAttacked = 1;
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour
     [Header("レベル関係")]
     [SerializeField, Tooltip("上がるレベル")] int _upLevel = 1;
     [SerializeField, Tooltip("上がるHPの最大値")] int _upMaxHp = 20;
-
+    
     
 
     private void Start()
@@ -46,6 +47,7 @@ public class EnemyController : MonoBehaviour
     /// <returns></returns>
     public void Hit(int damage)
     {
+        damage *= _damageScale;
         _enemyHp -= damage;
         _enemyHpText.text = _enemyHp.ToString();
         if (_enemyHp > 0)
@@ -64,6 +66,11 @@ public class EnemyController : MonoBehaviour
             Debug.LogWarning("なんかおかしいよ");
         }
     }
+
+    public void ChangeDefence(int value)
+    {
+        _damageScale *= value;
+    } 
 
 
     /// <summary>

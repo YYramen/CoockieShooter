@@ -100,6 +100,12 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"Œ»İ‚ÌUŒ‚—Í‚Í{_atk}");
     }
 
+    public void PowerUp(int value)
+    {
+        _atk = _atk * value;
+        Debug.Log($"Œ»İ‚ÌUŒ‚—Í‚Í{_atk}");
+    }
+
     public void ChangeInterval(float value)
     {
         _interval -= value;
