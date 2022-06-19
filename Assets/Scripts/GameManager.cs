@@ -25,6 +25,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public Inventory Inventory => _inventory;
     public void SetInventory(Inventory inventory) { _inventory = inventory; }
 
+    EnemyController _enemy;
+    public EnemyController EnemyController => _enemy;
+    public void SetEnemyController(EnemyController enemy) { _enemy = enemy; }
+
     public long Currentcoins => _currentCoins;
 
 

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField, Tooltip("攻撃力")] int _atk = 1;
     [SerializeField, Tooltip("攻撃間隔")] float _interval = 1.5f;
+    float _timer = 1.5f;
 
     [Header("マウスカーソルをゲーム中に消すかどうかの設定")]
     [SerializeField] public bool _hideSystemMouseCursor = false;
@@ -21,9 +22,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Tooltip("銃から飛ばされるRayの距離")] float _rayRange = 100f;
 
-    [Header("現在装備中の武器")]
-    [Tooltip("銃の配列"), SerializeField] GunBase[] _guns;
-    [Tooltip("現在装備中の武器")] GunBase _currentWepon = default;
+    //[Header("現在装備中の武器")]
+    //[Tooltip("銃の配列"), SerializeField] Base[] _guns;
+    //[Tooltip("現在装備中の武器")] GunBase _currentWepon = default;
 
     GameManager _coinManager;
 
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
         Cursor.visible = _hideSystemMouseCursor;
 
-        _currentWepon = _guns[0];
+        //_currentWepon = _guns[0];
 
         GameManager.Instance.SetPlayerController(this);
     }
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        _timer += Time.deltaTime;
         Crosshair();
     }
 
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour
         _gunObject.transform.rotation = Quaternion.LookRotation(ray.direction);
 
         // 左クリック(Shot)をした時
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1") && _interval < _timer)
         {
             Shot();
         }
@@ -88,6 +90,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("何にも当たらなかった");
         }
         Debug.DrawRay(ray.origin, ray.direction, Color.red, 1f);
+
+        _timer = 0f;
     }
 
     public void ChangeAttack(int value)
@@ -98,6 +102,11 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeInterval(float value)
     {
-        _interval += value;
+        _interval -= value;
+        if (_interval < 0.2f)
+        {
+            _interval = 0.2f;
+            return;
+        }
     }
 }

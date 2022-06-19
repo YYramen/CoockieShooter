@@ -25,8 +25,6 @@ public class GameData
         new ItemTable(){ Name = "タレット", price = 1000, targetId = 5},
         new ItemTable(){ Name = "ドローン", price = 10000, targetId = 6},        
         new ItemTable(){ Name = "武器の威力2倍", price = 1000, targetId = 7},
-        new ItemTable(){ Name = "タレットの威力2倍", price = 1000, targetId = 8},
-        new ItemTable(){ Name = "ドローンの威力2倍", price = 10000, targetId = 9},
-        new ItemTable(){  Name = "全ての武器の威力2倍", price = 25000, targetId = 10}
+        new ItemTable(){  Name = "全ての武器の威力2倍", price = 50000, targetId = 8}
     };
 }

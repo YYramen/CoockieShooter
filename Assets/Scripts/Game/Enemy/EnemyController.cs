@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.SetEnemyController(this);
         _enemyHp = _enemyMaxHp;
     }
 

@@ -14,7 +14,7 @@ public class WeponManager : MonoBehaviour
     class WeponSetting 
     {
         public int Id;
-        public Material Material;
+        //public Material Material;
         public AttatchmentBase Attatchment;
     }
     [SerializeField] List<WeponSetting> _weponSettings;

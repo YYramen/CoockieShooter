@@ -4,13 +4,12 @@ using UnityEngine;
 
 
 /// <summary>
-/// タレットとドローンにアタッチして使う、オートアタックのクラス。
+/// オートアタックのクラス。
 /// </summary>
 public class AutoAttackMachine : MonoBehaviour
 {
-    [SerializeField] int _id = 0;
     [SerializeField] float _attackInterval = 1.2f;
-    [SerializeField] int _attackNum = 1;
+    [SerializeField] int _attack = 1;
 
     private void Start()
     {
@@ -24,7 +23,7 @@ public class AutoAttackMachine : MonoBehaviour
             if (_attackInterval <= 0f) break;
 
             yield return new WaitForSeconds(_attackInterval);
-            GameManager.Instance.AddCoin(_attackNum);
+            GameManager.Instance.EnemyController.Hit(_attack);
         }
     }
 }

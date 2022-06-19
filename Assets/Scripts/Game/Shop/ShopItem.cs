@@ -25,7 +25,7 @@ public class ShopItem : MonoBehaviour
         {
             if (Value() > GameManager.Instance.Currentcoins) return;
             UpdateItem();
-            GameManager.Instance.BuySelect(_item, Value());
+            GameManager.Instance.BuySelect(item, item.price);
         });
         UpdateItem();
         _stackLevel++;
@@ -33,7 +33,7 @@ public class ShopItem : MonoBehaviour
 
     int Value()
     {
-        return Mathf.FloorToInt(_item.price * (1f + (float)(_itemNum / 10f)));
+        return _item.price;
     }
 
     public void UpdateItem()
