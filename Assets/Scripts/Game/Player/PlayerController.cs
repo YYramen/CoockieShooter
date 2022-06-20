@@ -16,11 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public bool _hideSystemMouseCursor = false;
 
     [Header("Æ€ŠÖŒW")]
-    [SerializeField, Tooltip("Æ€‚ÌUI")] Image _crosshairImage;
     [SerializeField, Tooltip("e‚ÌƒIƒuƒWƒFƒNƒg")] GameObject _gunObject;
-    public GameObject GunObject => _gunObject;
-
-    [SerializeField, Tooltip("e‚©‚ç”ò‚Î‚³‚ê‚éRay‚Ì‹——£")] float _rayRange = 100f;
 
     //[Header("Œ»İ‘•”õ’†‚Ì•Ší")]
     //[Tooltip("e‚Ì”z—ñ"), SerializeField] Base[] _guns;
@@ -56,9 +52,7 @@ public class PlayerController : MonoBehaviour
     void Crosshair()
     {
         // Æ€‚Ìˆ—
-        _crosshairImage.rectTransform.position = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
 
         // e‚ÌŒü‚­•ûŒü‚ğ•Ï‚¦‚é
         _gunObject.transform.rotation = Quaternion.LookRotation(ray.direction);

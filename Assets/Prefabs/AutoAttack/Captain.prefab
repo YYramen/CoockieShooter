@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 70014801749296512, guid: 6cef1994ee2a9fc489aa64342754b9d9, type: 3}
-  _pos: {x: -1.73, y: 1.59, z: -1.85}
+  _pos: {x: -1.73, y: 1.59, z: -1.059}
   _offsetX: 0.1
   _offsetY: 0.1
-  _id: 2

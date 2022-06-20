@@ -17,10 +17,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField, Tooltip("ダメージの倍率")] int _damageScale = 1;
 
     [Header("コイン関係")]
-    [SerializeField, Tooltip("敵を攻撃した際に貰えるコイン")] long _coinByAttacked = 1;
     [SerializeField, Tooltip("敵を倒した際に貰えるコイン")] long _coinByDeath = 10;
-
-    [Tooltip("攻撃判定のためのコライダー")] Collider _collider = null;
 
     [Header("レベル関係")]
     [SerializeField, Tooltip("上がるレベル")] int _upLevel = 1;

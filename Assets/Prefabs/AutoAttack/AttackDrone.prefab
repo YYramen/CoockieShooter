@@ -99,3 +99,4 @@ MonoBehaviour:
   _attackInterval: 1.2
   _attack: 5
   _id: 5
+  _bulletPrefab: {fileID: 3757102551180629127, guid: d210c9ca9247cd145b406b0b08140de4, type: 3}

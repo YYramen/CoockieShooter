@@ -11,6 +11,11 @@ public class PopUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] Text _DpsUi;
     public int _id = 0;
 
+    private void Start()
+    {
+        _uiPanel.SetActive(false);
+    }
+
     private void Update()
     {
         if (_uiPanel.activeSelf)
