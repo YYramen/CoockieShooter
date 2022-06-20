@@ -18,6 +18,7 @@ public class Shop : MonoBehaviour
             var go = Instantiate(_itemPrefab, _itemSpace);
 
             go.GetComponent<ShopItem>().SetUp(item);
+            go.SetActive(true);
         });
     }
 }

@@ -25,8 +25,8 @@ public class EnemyController : MonoBehaviour
     [Header("ƒŒƒxƒ‹ŠÖŒW")]
     [SerializeField, Tooltip("ã‚ª‚éƒŒƒxƒ‹")] int _upLevel = 1;
     [SerializeField, Tooltip("ã‚ª‚éHP‚ÌÅ‘å’l")] int _upMaxHp = 20;
-    
-    
+
+    public int DamageScale { get => _damageScale;}
 
     private void Start()
     {

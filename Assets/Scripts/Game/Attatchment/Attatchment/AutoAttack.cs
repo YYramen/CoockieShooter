@@ -10,6 +10,7 @@ public class AutoAttack : AttatchmentBase
     [SerializeField] float _offsetX = 0.1f;
     [SerializeField] float _offsetY = 0.1f;
     int _count = 0;
+
     public override void OnExecute()
     {
         Instantiate(_prefab, _pos + _offset, Quaternion.identity);

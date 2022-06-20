@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13d66a7695bb5c419568431c3495e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentCoins: 0
+  _currentCoins: 305333
   _coinText: {fileID: 1550931720}
 --- !u!1 &180740692
 GameObject:
@@ -842,8 +842,8 @@ RectTransform:
   m_Children:
   - {fileID: 1979921663}
   - {fileID: 1934169586}
-  - {fileID: 1496795614}
   - {fileID: 1948515679}
+  - {fileID: 1496795614}
   - {fileID: 277701322}
   m_Father: {fileID: 2069522880}
   m_RootOrder: 0
@@ -1699,7 +1699,7 @@ RectTransform:
   m_Children:
   - {fileID: 345501023}
   m_Father: {fileID: 360351454}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2126,7 +2126,7 @@ RectTransform:
   - {fileID: 1550931719}
   - {fileID: 649598750}
   m_Father: {fileID: 360351454}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

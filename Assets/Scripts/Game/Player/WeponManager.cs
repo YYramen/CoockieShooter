@@ -11,7 +11,7 @@ using System;
 public class WeponManager : MonoBehaviour
 {
     [Serializable]
-    class WeponSetting 
+    class WeponSetting
     {
         public int Id;
         //public Material Material;
@@ -21,23 +21,58 @@ public class WeponManager : MonoBehaviour
 
     List<WeponData> _wepons = new List<WeponData>();
 
-    int _createdCount = 0;
+    int[] _damageLog;
+    public int[] DamageLog => _damageLog;
+
+    int[] _currentDPS;
+    public int[] CurrentDPS => _currentDPS;
 
     private void Awake()
     {
         GameManager.Instance.SetWeponManager(this);
+
+        _damageLog = new int[GameData.ItemTable.Count];
+        _currentDPS = new int[GameData.ItemTable.Count];
     }
 
     public void SetUp(List<WeponData> savedata)
     {
         _wepons = savedata;
 
-        foreach(var w in _wepons)
+        foreach (var w in _wepons)
         {
-            for(int i = 0; i < w.Level; i++)
+            for (int i = 0; i < w.Level; i++)
             {
                 Buy(w.Id, true);
             }
+        }
+    }
+
+    /// <summary>
+    /// 今まで与えたダメージの更新
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="value"></param>
+    public void ChangePreviewDamageLog(int index, int value)
+    {
+        _damageLog[index] += value * GameManager.Instance.EnemyController.DamageScale;
+    }
+
+    /// <summary>
+    /// 現在のDPSの更新
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="value"></param>
+    public void ChangePreviewCounts(int index, int value)
+    {
+        _currentDPS[index] += value * GameManager.Instance.EnemyController.DamageScale;
+    }
+
+    public void ChangeDPSScale()
+    {
+        for (int i = 0; i < _currentDPS.Length; i++)
+        {
+            _currentDPS[i] *= GameManager.Instance.EnemyController.DamageScale;
         }
     }
 
@@ -55,9 +90,9 @@ public class WeponManager : MonoBehaviour
         {
             bool isFind = false;
 
-            for (int i= 0; i < _wepons.Count; i++)
+            for (int i = 0; i < _wepons.Count; i++)
             {
-                if(_wepons[i].Id != Id)
+                if (_wepons[i].Id != Id)
                 {
                     continue;
                 }
@@ -71,7 +106,6 @@ public class WeponManager : MonoBehaviour
                 _wepons.Add(new WeponData() { Id = Id, Level = 1 });
             }
         }
-        _createdCount++;
     }
 
     public int GetLevel(int id)

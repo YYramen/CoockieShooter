@@ -98,3 +98,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackInterval: 1.2
   _attack: 3
+  _id: 4

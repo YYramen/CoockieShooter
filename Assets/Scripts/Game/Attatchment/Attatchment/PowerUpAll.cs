@@ -9,5 +9,6 @@ public class PowerUpAll : AttatchmentBase
     public override void OnExecute()
     {
         GameManager.Instance.EnemyController.ChangeDefence(_powerValue);
+        GameManager.Instance.WeponManager.ChangeDPSScale();
     }
 }

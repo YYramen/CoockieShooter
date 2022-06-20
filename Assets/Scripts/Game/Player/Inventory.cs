@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < GameData.ItemTable.Count; i++)
         {
             var go = Instantiate(_itemPrefab, this.transform);
+            go.GetComponent<PopUi>()._id = i;
             go.SetActive(false);
             _items.Add(go);
         }
