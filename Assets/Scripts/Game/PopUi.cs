@@ -9,7 +9,6 @@ public class PopUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] GameObject _uiPanel;
     [SerializeField] Text _damageUi;
     [SerializeField] Text _DpsUi;
-    Vector2 _offset = new Vector2(0, 10);
     public int _id = 0;
 
     private void Update()
@@ -23,7 +22,6 @@ public class PopUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _uiPanel.transform.position = eventData.position + _offset;
         _uiPanel.SetActive(true);
     }
 
