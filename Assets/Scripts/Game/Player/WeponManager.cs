@@ -121,4 +121,9 @@ public class WeponManager : MonoBehaviour
             return 0;
         }
     }
+
+    public void Save(SaveData data)
+    {
+        data.Wepon = _wepons;
+    }
 }

@@ -24,7 +24,6 @@ public class WeponData
 [Serializable]
 public class SaveData 
 {
-    public int GameVersion = 1;
     public long CookieNum = 0;
     public List<WeponData> Wepon = new List<WeponData>();
     //public List<UpgradeData> Upgrade = new List<UpgradeData>();
