@@ -12,9 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("攻撃間隔")] float _interval = 1.5f;
     float _timer = 1.5f;
 
-    [Header("マウスカーソルをゲーム中に消すかどうかの設定")]
-    [SerializeField] public bool _hideSystemMouseCursor = false;
-
     [Header("照準関係")]
     [SerializeField, Tooltip("銃のオブジェクト")] GameObject _gunObject;
 
@@ -30,10 +27,6 @@ public class PlayerController : MonoBehaviour
     void StartGame()
     {
         _coinManager = GameManager.Instance;
-
-        Cursor.visible = _hideSystemMouseCursor;
-
-        //_currentWepon = _guns[0];
 
         GameManager.Instance.SetPlayerController(this);
     }
@@ -96,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     public void PowerUp(int value)
     {
-        _atk = _atk * value;
+        _atk *= value;
         Debug.Log($"現在の攻撃力は{_atk}");
     }
 

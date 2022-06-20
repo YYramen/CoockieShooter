@@ -188,7 +188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _atk: 1
   _interval: 0.8
-  _hideSystemMouseCursor: 1
   _gunObject: {fileID: 7641476792508729764}
 --- !u!4 &153238602
 Transform:
@@ -385,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3178424711910971521, guid: 661971c7a4388f449a2676f9d9650824, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3178424711910971521, guid: 661971c7a4388f449a2676f9d9650824, type: 3}
       propertyPath: m_LocalRotation.w
