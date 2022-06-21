@@ -20,8 +20,21 @@ public class PopUi : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (_uiPanel.activeSelf)
         {
-            _damageUi.text = $"今まで与えたダメージ：{GameManager.Instance.WeponManager.DamageLog[_id]}";
-            _DpsUi.text = $"現在の一回ごとの攻撃力{GameManager.Instance.WeponManager.CurrentDPS[_id]}";
+            if (_id == 0)
+            {
+                _DpsUi.text = $"現在の攻撃力：{GameManager.Instance.WeponManager.CurrentDPS[_id]}";
+            }
+            else if (_id == 1)
+            {
+                _DpsUi.text = $"現在の銃の発射速度：{GameManager.Instance.PlayerController.Interval}";
+            }
+            else
+            {
+                _damageUi.text = $"今まで与えたダメージ：{GameManager.Instance.WeponManager.DamageLog[_id]}";
+                _DpsUi.text = $"現在の攻撃力：{GameManager.Instance.WeponManager.CurrentDPS[_id]}";
+            }
+            //_damageUi.text = $"今まで与えたダメージ：{GameManager.Instance.WeponManager.DamageLog[_id]}";
+            //_DpsUi.text = $"現在の攻撃力：{GameManager.Instance.WeponManager.CurrentDPS[_id]}";
         }
     }
 

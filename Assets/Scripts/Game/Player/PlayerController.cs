@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField, Tooltip("UŒ‚—Í")] int _atk = 1;
     [SerializeField, Tooltip("UŒ‚ŠÔŠu")] float _interval = 1.5f;
+    public float Interval => _interval;
     float _timer = 1.5f;
 
     [Header("Æ€ŠÖŒW")]

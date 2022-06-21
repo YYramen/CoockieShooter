@@ -19,7 +19,6 @@ public class ShopToggle : MonoBehaviour
         {
             _isEnable = !_isEnable;
             _shopPanel.SetActive(_isEnable);
-            Cursor.visible = _isEnable;
         }
     }
 }
